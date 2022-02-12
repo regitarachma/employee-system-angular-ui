@@ -1,0 +1,13 @@
+.app {
+  background: #4694a6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #4694a6, #006677);
+  background: -moz-linear-gradient(right, #4694a6, #006677);
+  background: -o-linear-gradient(right, #4694a6, #006677);
+  background: linear-gradient(to left, #4694a6, #006677);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}

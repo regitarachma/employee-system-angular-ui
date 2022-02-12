@@ -1,0 +1,106 @@
+// Here you can add other styles
+
+// Theme style override
+.navbar-brand {
+  color: $white;
+
+  @include hover-focus {
+    color: $bg-red-light;
+  }
+}
+
+.app-header {
+  .dropdown-item {
+    @include hover-focus {
+      color: $bg-red-light;
+
+      .icon-item {
+        color: $bg-red-light;
+      }
+    }
+  }
+}
+
+.sidebar {
+  .nav-dropdown {
+    .nav-link {
+      &.active {
+        color: $sidebar-nav-link-active-color;
+      }
+
+      @include hover-focus {
+        color: $sidebar-nav-link-active-color;
+      }
+    }
+  }
+}
+
+.sidebar-minimized {
+  .sidebar {
+    .sidebar-minimizer {
+      @include borders($sidebar-borders);
+
+      &:hover {
+        background-color: $sidebar-minimizer-hover-bg;
+      }
+    }
+  }
+}
+
+.breadcrumb-menu {
+  .btn {
+    &:hover,
+    &.active {
+      color: $bg-red-light;
+    }
+  }
+}
+
+// Import ngx-datatable
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+// Import ng-select
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+// Import DatePicker
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
+// Import NGX Toastr
+@import '~ngx-toastr/toastr-bs4-alert';
+#toast-container > div {
+  opacity: 1;
+}
+.toast-primary {
+  color: #fff;
+  background-color: #20a8d8;
+  border-color: #20a8d8;
+}
+
+label.required::after {
+  content: '*';
+  color: #e32;
+  margin-left: 5px;
+}
+
+ng-select.form-control {
+  border: none;
+  padding: 0;
+}
+
+ng-select.ng-invalid.ng-touched .ng-select-container {
+  border-color: #dc3545;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+}
+
+// custom card header
+.card-header-blue {
+  @extend .card-header;
+  background-color: $bg-red;
+  color: $white;
+}
+
+.app, app-dashboard {
+  height: 100%;
+}

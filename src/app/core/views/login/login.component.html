@@ -1,0 +1,71 @@
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card p-4 animated fadeIn">
+          <div class="card-body">
+            <form 
+              #loginForm="ngForm" 
+              (ngSubmit)="loginForm.form.valid && onLogin(loginForm)" 
+              novalidate
+            >
+              <h3 class="row justify-content-center">Employee Management</h3>
+              <div class="row justify-content-center">
+                <p class="second-label">Login with your account</p><br><br>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input 
+                  [class.is-invalid]="loginForm.submitted && username.invalid" 
+                  #username="ngModel" 
+                  [(ngModel)]="userLogin.username"
+                  autocomplete="username"
+                  class="form-control"
+                  id="username" 
+                  name="username" 
+                  placeholder="Username" 
+                  required 
+                  type="text"
+                >
+                <ng-container *ngIf="loginForm.submitted && username.invalid">
+                  <div *ngIf="username.errors.required" class="invalid-feedback">
+                    Username is required.
+                  </div>
+                </ng-container>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-lock"></i></span>
+                </div>
+                <input 
+                  [class.is-invalid]="loginForm.submitted && password.invalid" 
+                  #password="ngModel" 
+                  [(ngModel)]="userLogin.password"
+                  autocomplete="current-password"
+                  class="form-control" 
+                  id="password" 
+                  name="password" 
+                  placeholder="Password" 
+                  required
+                  type="password">
+                <ng-container *ngIf="loginForm.submitted && password.invalid">
+                  <div *ngIf="password.errors.required" class="invalid-feedback">
+                    Password is required.
+                  </div>
+                </ng-container>
+              </div>
+              <p [hidden]="!wrongPassword" class="text-danger">Wrong username or password.</p>
+              <div class="row">
+                <div class="col-12">
+                  <button class="btn btn-block btn-primary px-4">Login</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

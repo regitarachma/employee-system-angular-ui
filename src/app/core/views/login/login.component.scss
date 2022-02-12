@@ -1,0 +1,17 @@
+.app {
+  background: #000000; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(right, #ca4e4e, #000000);
+  // background: -moz-linear-gradient(right, #ca4e4e, #000000);
+  // background: -o-linear-gradient(right, #ca4e4e, #000000);
+  background: linear-gradient(to top, #000080, #000000);
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+}
+
+.app-title {
+  color: #000000;
+}
+
+.second-label {
+  color: #ca4e4e;
+}

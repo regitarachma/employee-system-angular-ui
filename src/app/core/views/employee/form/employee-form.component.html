@@ -1,0 +1,207 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-body">
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="form"
+      >
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Username -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Username</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'username')"
+                class="form-control"
+                formControlName="username"
+                required
+                type="text"
+              />
+              <ng-container *ngIf="isFieldInvalid(form,'username')">
+                <div *ngIf="form.get('username').hasError('required')" class="invalid-feedback">
+                  Username is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- First Name -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">First Name</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'firstName')"
+                class="form-control"
+                formControlName="firstName"
+                required
+                type="text"
+              />
+              <ng-container *ngIf="isFieldInvalid(form,'firstName')">
+                <div *ngIf="form.get('firstName').hasError('required')" class="invalid-feedback">
+                  First Name is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Last Name -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Last Name</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'lastName')"
+                class="form-control"
+                formControlName="lastName"
+                required
+                type="text"
+              />
+              <ng-container *ngIf="isFieldInvalid(form,'lastName')">
+                <div *ngIf="form.get('lastName').hasError('required')" class="invalid-feedback">
+                  Last Name is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Email -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Email</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'email')"
+                class="form-control"
+                formControlName="email"
+                required
+                type="text"
+              />
+              <ng-container *ngIf="isFieldInvalid(form,'email')">
+                <div *ngIf="form.get('email').hasError('required')" class="invalid-feedback">
+                  Email is required
+                </div>
+                <div *ngIf="form.get('email').hasError('pattern')" class="invalid-feedback">
+                  Please provide a valid email address
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Birth Date -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Birth Date</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'birthDate')"
+								[bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                [maxDate]="maxDate"
+								bsDatepicker
+								class="form-control"
+                formControlName="birthDate"
+                required
+							>
+              <ng-container *ngIf="isFieldInvalid(form,'birthDate')">
+                <div *ngIf="form.get('birthDate').hasError('required')" class="invalid-feedback">
+                  Birth Date is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Basic Salary -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Basic Salary</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'basicSalary')"
+                (input)="formatNumber($event.target.value)"
+                class="form-control"
+                formControlName="basicSalary"
+                required
+                type="text"
+              />
+              <b><label style="font-size:15px;">BASIC SALARY: {{ replaceValue }}</label></b>
+              <ng-container *ngIf="isFieldInvalid(form,'basicSalary')">
+                <div *ngIf="form.get('basicSalary').hasError('required')" class="invalid-feedback">
+                  Basic Salary is required
+                </div>
+                <div *ngIf="form.get('basicSalary').hasError('pattern')" class="invalid-feedback">
+                  Please provide a valid salary
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Status -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Status</label>
+              <input
+                [class.is-invalid]="isFieldInvalid(form, 'status')"
+                class="form-control"
+                formControlName="status"
+                required
+                type="text"
+              />
+              <ng-container *ngIf="isFieldInvalid(form,'status')">
+                <div *ngIf="form.get('status').hasError('required')" class="invalid-feedback">
+                  Status is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Group -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Group</label>
+              <ng-select
+                [class.is-invalid]="isFieldInvalid(form, 'group')"
+                [clearable]="true"
+                [virtualScroll]="true"
+                formControlName="group"
+                class="form-control"
+                required
+              >
+                <ng-option
+                  *ngFor="let item of groups"
+                  [value]="item.id"
+                >
+                  {{ item.name }}
+                </ng-option>
+              </ng-select>
+              <ng-container *ngIf="isFieldInvalid(form,'group')">
+                <div *ngIf="form.get('group').hasError('required')" class="invalid-feedback">
+                  Group is required
+                </div>
+              </ng-container>
+            </fieldset>
+
+            <!-- Description -->
+            <fieldset class="form-group">
+              <label class="col-form-label required">Description</label>
+              <textarea
+                [class.is-invalid]="isFieldInvalid(form, 'description')"
+                class="form-control"
+                formControlName="description"
+                required
+                type="text"
+              ></textarea>
+              <ng-container *ngIf="isFieldInvalid(form,'description')">
+                <div *ngIf="form.get('description').hasError('required')" class="invalid-feedback">
+                  Description is required
+                </div>
+              </ng-container>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col form-group">
+            <div class="form-actions submit-button mt-5">
+              <ng-template [ngIfElse]="falseEditable" [ngIf]="editable">
+                <button class="btn btn-sm btn-primary" type="submit" (click)="btn($event)">
+                  <i class="fa fa-check"></i> Submit
+                </button>&nbsp;
+              </ng-template>
+              <button (click)="location.back()" class="btn btn-sm btn-secondary cancel-buttons" type="button">
+                <i class="fa fa-close"></i> Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="buttonSubmit">
+          <br>
+          <b>Hasil Submit Form: <br></b>
+          {{ formSubmit | json }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

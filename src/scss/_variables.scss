@@ -1,0 +1,55 @@
+// Variable overrides
+$enable-validation-icons: false;
+
+// Import references
+@import "~@coreui/coreui/scss/variables/colors";
+
+// Colors section
+$bg-red: #55608d;
+$bg-red-light: #ffd2d2;
+$bg-black: #001263;
+
+// Variable style overrides
+
+// Navbar
+$navbar-height: 50px;
+$navbar-brand-width: 220px;
+$border-color: $gray-300;
+$navbar-border: none;
+$navbar-bg: $bg-black;
+$navbar-brand-bg: #001263;
+$navbar-color: $white;
+$navbar-hover-color: $bg-red-light;
+$navbar-active-color: $bg-red-light;
+
+// Sidebar
+$sidebar-borders: (
+  right: (
+    size: 1px,
+    style: solid,
+    color: $border-color
+  )
+);
+$sidebar-minimizer-borders: (
+  top: (
+    size: 1px,
+    style: solid,
+    color: $border-color
+  )
+);
+$sidebar-width: 220px;
+$sidebar-bg: $white;
+$sidebar-color: $gray-800;
+$sidebar-nav-link-color: $gray-800;
+$sidebar-nav-link-icon-color: $gray-700;
+$sidebar-nav-link-hover-bg: $bg-black;
+$sidebar-nav-link-active-bg: $bg-red;
+$sidebar-nav-link-active-icon-color: $white;
+$sidebar-nav-title-color: $bg-red-light;
+$sidebar-nav-dropdown-bg: $gray-200;
+$sidebar-nav-dropdown-color: $gray-800;
+$sidebar-minimizer-bg: $gray-100;
+$sidebar-minimizer-hover-bg: $bg-black;
+
+// Breadcrumb
+$breadcrumb-active-color: $bg-red;

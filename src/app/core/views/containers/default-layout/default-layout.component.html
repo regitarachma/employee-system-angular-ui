@@ -1,0 +1,29 @@
+<app-header
+  [asideMenuToggler]="false"
+  [fixed]="true"
+  [mobileAsideMenuToggler]="false"
+  [navbarBrandRouterLink]="['/dashboard']"
+  [navbarBrandText]="{text: 'Employee System'}"
+  [sidebarToggler]="false">
+  <ul class="nav navbar-nav ml-auto">
+    <button (click)="onLogout()" class="btn btn-sm btn-primary">
+      <i class="icons cui-account-logout"></i> Logout
+    </button> &nbsp;
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar #appSidebar (minimizedChange)="toggleMinimize($event)" [display]="'lg'" [fixed]="true" [minimized]="sidebarMinimized">
+    <app-sidebar-nav [disabled]="appSidebar.minimized" [navItems]="navItems" [perfectScrollbar]></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+
+  <main class="main">
+    <cui-breadcrumb></cui-breadcrumb>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.container-fluid -->
+  </main>
+</div>
+<app-footer>
+  <span class="ml-auto">Copyright Employee Management System by Regita Rachma</span>
+</app-footer>
