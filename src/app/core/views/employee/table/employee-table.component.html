@@ -1,0 +1,198 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <div class="row no-gutters">
+            <button class="btn btn-sm btn-success" routerLink="add" type="button">
+              <i class="fa fa-plus"></i>
+              &nbsp;Add New
+            </button> &nbsp;&nbsp;
+            <div class="col-1">
+              <ng-select
+                [items]="limitValue"
+                [clearable]="false"
+                bindLabel="key"
+                bindValue="value"
+                (change)="onSelectedPageSize($event)"
+                [(ngModel)]="selectedDefaultValue"
+              ></ng-select>
+            </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col-8 mt-1" style="margin-left: -15px;">
+              <label>records per page</label>
+            </div>
+          </div>  
+        </div>
+        <div class="col-md-4 ml-auto">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control search-header-input"
+              placeholder="Search"
+              (keyup)="updateFilter($event)"
+            />
+          </div>
+        </div>   
+      </div>
+      <div class="row">
+        <div class="col">
+          <ngx-datatable
+            #myTable
+            class="material expandable"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="50"
+            [scrollbarV]="false"
+            [scrollbarH]="true"
+            [limit]="sizePage"
+            [rows]="rows"
+            (page)="onPage($event)"
+          >
+
+          <!-- Row Detail Template -->
+          <ngx-datatable-row-detail
+          [rowHeight]="150"
+        >
+          <ng-template
+            let-firstName="row.firstName" 
+            let-lastName="row.lastName" 
+            let-email="row.email" 
+            let-birthDate="row.birthDate" 
+            let-basicSalary="row.basicSalary" 
+            let-status="row.status" 
+            let-group="row.group" 
+            let-description="row.description"
+            ngx-datatable-row-detail-template
+          >
+            <div style="padding-left: 60px; font-size: 14px">
+              <div class="row">{{ firstName }} - {{ lastName }}</div>
+              <div class="row">{{ email }}</div>
+              <div class="row">{{ birthDate }}</div>
+              <div class="row">{{ basicSalary }}</div>
+              <div class="row">{{ status }}</div>
+              <div class="row">{{ group }}</div>
+              <div class="row">{{ description }}</div>
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <!-- Arrow Detail Templates -->
+        <ngx-datatable-column
+          [cellClass]="'d-sm-none'"
+          [draggable]="false"
+          [headerClass]="'d-sm-none'"
+          [sortable]="false"
+          [width]="50"
+        >
+          <ng-template let-expanded="expanded" let-row="row" ngx-datatable-cell-template>
+            <a
+              (click)="toggleExpandRow(row)"
+              [class.datatable-icon-down]="expanded"
+              [class.datatable-icon-right]="!expanded"
+              title="Expand/Collapse Row"
+            >
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+            
+            <!-- Username -->
+            <ngx-datatable-column name="Username" [width]="70">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{ value }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- FirstName -->
+            <ngx-datatable-column name="First Name" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- LastName -->
+            <ngx-datatable-column name="Last Name" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Email -->
+            <ngx-datatable-column name="Email" [flexGrow]="1" [width]="100" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Birth Date -->
+            <ngx-datatable-column name="Birth Date" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Basic Salary -->
+            <ngx-datatable-column name="Basic Salary" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Status -->
+            <ngx-datatable-column name="Status" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Group -->
+            <ngx-datatable-column name="Group" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- Description -->
+            <ngx-datatable-column name="Description" [flexGrow]="1" [width]="100" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Action" [width]="100">
+              <ng-template 
+                let-id="row.id" 
+                let-username="row.username" 
+                let-firstName="row.firstName" 
+                let-lastName="row.lastName" 
+                let-email="row.email" 
+                let-birthDate="row.birthDate" 
+                let-basicSalary="row.basicSalary" 
+                let-status="row.status" 
+                let-group="row.group" 
+                let-description="row.description"
+                ngx-datatable-cell-template>
+                <button [routerLink]="[id]" class="btn btn-sm btn-primary" title="detail" type="button" 
+                  (click)="getIdData(username, firstName, lastName, email, birthDate, basicSalary, status, group, description)">
+                  <i class="fa fa-eye fa-sm"></i>
+                </button>&nbsp;
+                <button class="btn btn-sm btn-success" title="edit" type="button">
+                  <i class="fa fa-edit fa-sm"></i>
+                </button>&nbsp;
+                <button class="btn btn-sm btn-danger" title="inactivate" type="button" [swal]="{
+                    titleText: 'Delete Employee',
+                    text: 'Do you want to delete ' + username + '?',
+                    icon: 'warning',
+                    showCancelButton: true
+                  }"
+                >
+                  <i class="fa fa-trash fa-sm"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
