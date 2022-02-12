@@ -6,6 +6,12 @@ Development Employee Management System by Regita Rachma
 ## Installation
 
 ``` bash
+
+# environment
+Install Node.js
+Install NPM
+Install Visual Studio Code (running apps)
+
 # go into app's directory
 $ cd my-project
 
