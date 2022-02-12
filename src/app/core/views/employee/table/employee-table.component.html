@@ -49,58 +49,113 @@
             [rows]="rows"
             (page)="onPage($event)"
           >
+
+          <!-- Row Detail Template -->
+          <ngx-datatable-row-detail
+          [rowHeight]="150"
+        >
+          <ng-template
+            let-firstName="row.firstName" 
+            let-lastName="row.lastName" 
+            let-email="row.email" 
+            let-birthDate="row.birthDate" 
+            let-basicSalary="row.basicSalary" 
+            let-status="row.status" 
+            let-group="row.group" 
+            let-description="row.description"
+            ngx-datatable-row-detail-template
+          >
+            <div style="padding-left: 60px; font-size: 14px">
+              <div class="row">{{ firstName }} - {{ lastName }}</div>
+              <div class="row">{{ email }}</div>
+              <div class="row">{{ birthDate }}</div>
+              <div class="row">{{ basicSalary }}</div>
+              <div class="row">{{ status }}</div>
+              <div class="row">{{ group }}</div>
+              <div class="row">{{ description }}</div>
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <!-- Arrow Detail Templates -->
+        <ngx-datatable-column
+          [cellClass]="'d-sm-none'"
+          [draggable]="false"
+          [headerClass]="'d-sm-none'"
+          [sortable]="false"
+          [width]="50"
+        >
+          <ng-template let-expanded="expanded" let-row="row" ngx-datatable-cell-template>
+            <a
+              (click)="toggleExpandRow(row)"
+              [class.datatable-icon-down]="expanded"
+              [class.datatable-icon-right]="!expanded"
+              title="Expand/Collapse Row"
+            >
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
             
+            <!-- Username -->
             <ngx-datatable-column name="Username" [width]="70">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 {{ value }}
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="First Name" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- FirstName -->
+            <ngx-datatable-column name="First Name" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Last Name" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- LastName -->
+            <ngx-datatable-column name="Last Name" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Email" [width]="100">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Email -->
+            <ngx-datatable-column name="Email" [flexGrow]="1" [width]="100" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Birth Date" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Birth Date -->
+            <ngx-datatable-column name="Birth Date" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Basic Salary" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Basic Salary -->
+            <ngx-datatable-column name="Basic Salary" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Status" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Status -->
+            <ngx-datatable-column name="Status" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Group" [width]="30">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Group -->
+            <ngx-datatable-column name="Group" [flexGrow]="1" [width]="30" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Description" [width]="100">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{ value }}
+            <!-- Description -->
+            <ngx-datatable-column name="Description" [flexGrow]="1" [width]="100" [cellClass]="'d-none d-md-inline'" [headerClass]="'d-none d-md-inline'">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mobile-hidden">{{ value }}</span>
               </ng-template>
             </ngx-datatable-column>
 
